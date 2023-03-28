@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:nuance/core/constants/constants.dart';
 import 'package:nuance/presentation/screens/home/widgets/brandrow.dart';
 import 'package:nuance/presentation/screens/home/widgets/itemwidget.dart';
@@ -6,9 +8,12 @@ import 'package:nuance/presentation/screens/home/widgets/rowband.dart';
 import 'package:nuance/presentation/screens/home/widgets/searchfield.dart';
 import 'package:nuance/presentation/widgets/appbarwidget.dart';
 
+import '../../../controller/searchcontroller.dart';
+
 class HomePage extends StatelessWidget {
    HomePage({super.key});
   final TextEditingController _searchontroller = TextEditingController( );
+    Searchcontroller searchcontroller = Get.put(Searchcontroller());
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -27,6 +32,7 @@ class HomePage extends StatelessWidget {
               kHeight10,
               const Rowbrand(),
               kHeight10,
+              //SreachScreenProducts()
                ItemWidget()
                   ],
             ),

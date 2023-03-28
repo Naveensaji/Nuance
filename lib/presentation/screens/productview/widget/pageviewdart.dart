@@ -2,11 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuance/core/constants/constants.dart';
 
+import '../../../../model/product_model.dart';
+
 
 class PageViewWidget extends StatelessWidget {
   const PageViewWidget({
-    Key? key,
+    Key? key, 
+    required this.image,
+     required this.product,
   }) : super(key: key);
+
+  final String image;
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -14,24 +21,19 @@ class PageViewWidget extends StatelessWidget {
       height: 200,
       decoration: const BoxDecoration(
         color: kWhite,
-        //borderRadius: BorderRadius.circular(20)
       ),
-      child: PageView(
+      child: PageView.builder(
+      itemCount: product.imagelist.length,
         scrollDirection: Axis.horizontal,
-        children: [
-          Image.network(
-            'https://rukminim1.flixcart.com/image/416/416/k73nlow0/headphone/h/9/z/boat-rockerz-370-original-imafpef5cszgwxmx.jpeg?q=70',
+         itemBuilder: (context, index) {
+            return Image.network(
+          product.imagelist[index],
             fit: BoxFit.contain,
-          ),
-          Image.network(
-            'https://rukminim1.flixcart.com/image/416/416/k73nlow0/headphone/h/9/z/boat-rockerz-370-original-imafpef5cnqf6zcy.jpeg?q=70',
-            fit: BoxFit.contain,
-          ),
-          Image.network(
-            'https://rukminim1.flixcart.com/image/416/416/k7jdg280/headphone/h/9/z/boat-rockerz-370-original-imafpr3tsccbdkk5.jpeg?q=70',
-            fit: BoxFit.contain,
-          )
-        ],
+          );
+         
+         },
+         
+        
       ),
     );
   }

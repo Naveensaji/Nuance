@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nuance/core/constants/constants.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 class ProductDiscription extends StatelessWidget {
@@ -16,12 +16,8 @@ class ProductDiscription extends StatelessWidget {
       padding: const EdgeInsets.only(left: 20, right: 20),
       child: Text(
         '${productdescription.toString()}',
-        maxLines: 3,
-        style: const TextStyle(
-            overflow: TextOverflow.ellipsis,
-            color: kBlack,
-            fontSize: 15,
-            fontWeight: FontWeight.bold),
+        maxLines: 4,
+      style: GoogleFonts.redHatDisplay(textStyle: const TextStyle(fontSize: 16,fontWeight: FontWeight.w600))
       ),
     );
   }

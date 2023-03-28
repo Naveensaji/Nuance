@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nuance/core/constants/constants.dart';
+import 'package:nuance/model/product_model.dart';
 import 'package:nuance/presentation/screens/cart/widget/totalprice.dart';
 import 'package:nuance/presentation/screens/login/widget/text.dart';
-import 'package:nuance/presentation/screens/productview/widget/colorrow.dart';
 import 'package:nuance/presentation/screens/productview/widget/pageviewdart.dart';
 import 'package:nuance/presentation/screens/productview/widget/productdetails.dart';
 import 'package:nuance/presentation/screens/productview/widget/prosductname.dart';
 
 
 class ProductView extends StatelessWidget {
-  const ProductView({Key? key}) : super(key: key);
+  const ProductView({Key? key,
+   required this.product
+   }) : super(key: key);
 
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +28,7 @@ class ProductView extends StatelessWidget {
             padding: const EdgeInsets.only(left: 20),
             child: IconButton(
                 onPressed: () {
-                  Navigator.of(context).pop();
+                 Get.back();
                 },
                 icon: const Icon(
                   Icons.arrow_back_ios,
@@ -45,29 +49,23 @@ class ProductView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const PageViewWidget(),
+           PageViewWidget(product: product,image: product.imagelist[0]),
           kHeight10,
-          const ProductNamePriceCart(),
+           ProductNamePriceCart(name: product.name,price: product.price,),
           kHeight10,
-          ProductDiscription(productdescription: 'Renewed boAt Rockerz 510 Bluetooth Wireless On Ear Headphones with Mic (Jazzy Red)'),
+          ProductDiscription(productdescription:product.description),
+          kHeight100,
           kHeight10,
-          Padding(
-            padding: const EdgeInsets.only(left: 20),
-            child:Textlogin(text: 'Colors', textsize: 16)
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 15),
+                child:Textlogin(text: 'Connection Type : ', textsize: 17),
+              ),
+              Textlogin(text: product.connectiontype, textsize: 16)
+            ],
           ),
-          Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children:const [
-          SizedBox(
-            width: 230,
-            height: 50,
-            child: Colorrow(),
-          ),
-        ],
-      ),
-    )
+   
          
         ],
       ),
@@ -86,40 +84,3 @@ class ProductView extends StatelessWidget {
     );
   }
 }
-//   // ignore: non_constant_identifier_names
-//   SingleChildScrollView ProductFulldetails() {
-//     return SingleChildScrollView(
-//       child: Column(
-//         mainAxisAlignment: MainAxisAlignment.start,
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           const PageViewWidget(),
-//           kHeight10,
-//           const ProductNamePriceCart(),
-//           kHeight10,
-//           ProductDiscription(productdescription: 'Renewed boAt Rockerz 510 Bluetooth Wireless On Ear Headphones with Mic (Jazzy Red)'),
-//           kHeight10,
-//           Padding(
-//             padding: const EdgeInsets.only(left: 20),
-//             child:Textlogin(text: 'Colors', textsize: 16)
-//           ),
-//           Padding(
-//       padding: const EdgeInsets.only(left: 20, right: 20),
-//       child: Row(
-//         mainAxisSize: MainAxisSize.min,
-//         children:const [
-//           SizedBox(
-//             width: 230,
-//             height: 50,
-//             child: Colorrow(),
-//           ),
-//         ],
-//       ),
-//     )
-         
-//         ],
-//       ),
-//     );
-//   }
-
-// }

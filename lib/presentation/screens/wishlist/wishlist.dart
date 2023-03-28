@@ -19,7 +19,7 @@ class WishlistPage extends StatelessWidget {
           children: 
             [Column(
               children: [
-               ItemWidget()
+               //ItemWidget()
                   ],
             ),
           ],

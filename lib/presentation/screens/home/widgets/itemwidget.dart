@@ -1,25 +1,49 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:nuance/model/product_model.dart';
 import 'package:nuance/presentation/screens/productview/productview.dart';
+
+import '../../../../controller/searchcontroller.dart';
 
 class ItemWidget extends StatelessWidget {
   ItemWidget({Key? key}) : super(key: key);
-
-  final List<String>? imageurl = [
-    'https://rukminim1.flixcart.com/image/416/416/k73nlow0/headphone/h/9/z/boat-rockerz-370-original-imafpef5cszgwxmx.jpeg?q=70',
-    'https://rukminim1.flixcart.com/image/416/416/k7285u80/headphone/4/3/u/boat-rockerz-370-original-imafpdzhywghfabu.jpeg?q=70',
-    'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTNrUDtvxQURbBLkLTpu7TSai0nLRbdC7bslPb3-9k4IZQe7D4Xp-3t6Q90loYrN5esd4Xqkz2j-Enf&usqp=CAc',
-    'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTJ9a8iWTtjV-QK7MlRgDiLd2GM-jR0dVJVJMrfXSyHcR8i8p-x0kBWlVw5WFPoEqfrBC-waEuZwQ&usqp=CAc',
-    'https://rukminim1.flixcart.com/image/416/416/k73nlow0/headphone/h/9/z/boat-rockerz-370-original-imafpef5cszgwxmx.jpeg?q=70',
-    'https://rukminim1.flixcart.com/image/416/416/k7285u80/headphone/4/3/u/boat-rockerz-370-original-imafpdzhywghfabu.jpeg?q=70',
-    'https://rukminim1.flixcart.com/image/416/416/kmccosw0/headphone/9/h/j/rockerz-450-pro-boat-original-imagf9gyd4u6w85z.jpeg?q=70',
-    'https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcTJ9a8iWTtjV-QK7MlRgDiLd2GM-jR0dVJVJMrfXSyHcR8i8p-x0kBWlVw5WFPoEqfrBC-waEuZwQ&usqp=CAc',
-    
-  ];
-
+    Searchcontroller searchcontroller = Get.put(Searchcontroller());
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      itemCount: imageurl!.length,
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {});
+    return StreamBuilder<List<ProductModel>>(
+      stream: FirebaseFirestore.instance
+      .collection('search')
+      .snapshots()
+      .map(
+            (snapshot) => snapshot.docs
+                .map((e) => ProductModel.fromJson(e.data()))
+                .toList()),
+      builder: (context, snapshot) {
+        if(snapshot.hasError){
+          return const Center(
+            child: Text('Error occuered'),
+          );
+        }
+        else if(snapshot.data == null){
+          return const Center(
+            child: Text('Empty'),
+          );
+        }
+        else if(snapshot.connectionState == ConnectionState.waiting){
+          return const Center(
+            child:CircularProgressIndicator(),
+          );
+        }else{
+          return Padding(padding: EdgeInsets.all(15),
+          child: GetBuilder<Searchcontroller>(
+            init: Searchcontroller(),
+            builder: (searchcontroller){
+              return  GridView.builder(
+      itemCount: searchcontroller.searchlist.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         childAspectRatio: 0.80,
         crossAxisCount: 2,
@@ -30,13 +54,13 @@ class ItemWidget extends StatelessWidget {
         //   for (int i = 0; i < 10; i++)
         return GestureDetector(
           onTap: () {
-             Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>const ProductView() ) );
+             Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=> ProductView(product:searchcontroller.searchlist[index] ,) ) );
           },
           child: Container(
             padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
             margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
             decoration: BoxDecoration(
-                color:  const Color.fromARGB(255, 247, 247, 247), borderRadius: BorderRadius.circular(20)),
+                color:  Color.fromARGB(255, 255, 255, 255), borderRadius: BorderRadius.circular(20)),
             child: Column(
               children: [
                 Row(
@@ -49,39 +73,36 @@ class ItemWidget extends StatelessWidget {
                         color: Colors.black,
                       ),
                     ),
-                    // Icon(
-                    //   Icons.add_shopping_cart,
-                    //   color: Colors.black,
-                    // ),
                   ],
                 ),
-                Container(
-                  //margin: EdgeInsets.all(10),
-                  child: Image.network(
-                    imageurl![index].toString(),
-                    width: 100,
-                    height: 100,
-                  ),
+                Image.network(
+                  searchcontroller
+                  .searchlist[index]
+                  .imagelist[0],
+                  width: 150,
+                  height: 100,
                 ),
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),
                   alignment: Alignment.centerLeft,
-                  child: const Text(
-                    "Boat Rockers",
-                    style: TextStyle(
+                  child:  Text(
+                    searchcontroller.searchlist[index].name,
+                    maxLines: 1,
+                    style: const TextStyle(
                         color: Colors.black,
-                        fontSize: 16,
+                        overflow: TextOverflow.ellipsis,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),
                   alignment: Alignment.centerLeft,
-                  child: const Text(
-                    "₹1,999",
-                    style: TextStyle(
+                  child:  Text(
+                   "₹${searchcontroller.searchlist[index].price}",
+                    style: const TextStyle(
                         color: Colors.black,
-                        fontSize: 15,
+                        fontSize: 14,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -96,5 +117,9 @@ class ItemWidget extends StatelessWidget {
       shrinkWrap: true,
       // children: [],
     );
+            }),
+          );
+        }
+      },);
   }
 }
