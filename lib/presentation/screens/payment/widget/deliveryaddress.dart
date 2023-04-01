@@ -1,14 +1,21 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nuance/core/constants/constants.dart';
+import 'package:nuance/domain/model/prodile_model.dart';
+import 'package:nuance/functions/addressedit/addressedit.dart';
+import 'package:nuance/functions/profile/editprofile.dart';
+import 'package:nuance/functions/wishlist/wishlist_dunction.dart';
 import 'package:nuance/presentation/screens/login/widget/whitetext.dart';
 
 class Deliveryaddress extends StatelessWidget {
   const Deliveryaddress({
     Key? key,
+    required this.addresscontroller,
   }) : super(key: key);
 
+  final TextEditingController addresscontroller;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,10 +48,33 @@ class Deliveryaddress extends StatelessWidget {
               ))
             ),
             trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.defaultDialog(
+                    title: 'Please enter the address to be delievered',
+                    content: TextFormField(
+                    controller: addresscontroller,
+                    keyboardType: TextInputType.multiline,
+                    minLines: 1,
+                    maxLines: 5,
+                      ),
+                  cancel: ActionChip(label: const Text('Cancel'),
+                  onPressed: () => Get.back()
+                       ),
+                  confirm: InputChip(label: const Text('Confirm'),
+                  onPressed: () {
+                    editaddress(profileModel: ProfileModel(
+                    useremail: currentemail,
+                    address: addresscontroller.text
+                    ));
+                    Get.back();
+                  },
+                  )
+
+                  );
+                },
                 icon: const Icon(
-                  Icons.edit,
-                  color: kWhite,
+                Icons.edit,
+                color: kWhite,
                 )),
           ),
         ],

@@ -9,8 +9,9 @@ import 'package:nuance/presentation/widgets/appbarwidget.dart';
 
 
 class PaymentPage extends StatelessWidget {
-  const PaymentPage({super.key});
+  const PaymentPage({super.key, required this.addresscontroller});
 
+  final TextEditingController addresscontroller;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -23,10 +24,10 @@ class PaymentPage extends StatelessWidget {
           children: 
             [Column(
               children: [
-                 const Padding(
-            padding:  EdgeInsets.only(left: 10, right: 10),
-            child: Deliveryaddress(),
-          ),kHeight40,
+              Padding(
+              padding:  const EdgeInsets.only(left: 10, right: 10),
+              child: Deliveryaddress(addresscontroller:addresscontroller,),),
+              kHeight40,
           Textlogin(text: 'Select the payment you want to use', textsize: 14),kHeight40,
           PaymentTile(title: 'Razer Pay', imageUrl: 'https://yt3.ggpht.com/ytc/AMLnZu8hEuwIDjx39XqXih5os_s6PVzgsptnGb8Q1tkKvw=s900-c-k-c0x00ffffff-no-rj', radiobutton: Radio(
                 activeColor:kWhite,
