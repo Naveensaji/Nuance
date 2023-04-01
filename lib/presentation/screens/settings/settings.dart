@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nuance/core/constants/constants.dart';
+import 'package:nuance/functions/authentication/google.dart';
+import 'package:nuance/presentation/screens/login/login.dart';
 import 'package:nuance/presentation/screens/notifation/notification.dart';
 import 'package:nuance/presentation/screens/order%20history/orderhistory.dart';
 import 'package:nuance/presentation/screens/settings/widgets/settingstile.dart';
@@ -39,7 +42,12 @@ class SettingsPage extends StatelessWidget {
             kHeight10,
             Settingstile(leadingicon: Icons.people_rounded, trailingicon: Icons.arrow_forward_ios_sharp, title: 'Invite Friends'),
             kHeight10,
-            Settingstile(leadingicon: Icons.logout, trailingicon: Icons.arrow_forward_ios_sharp, title: 'Log Out'),
+            GestureDetector(
+              onTap: () async{
+                logout();
+               await Get.to(()=>LoginPage());
+              },
+              child: Settingstile(leadingicon: Icons.logout, trailingicon: Icons.arrow_forward_ios_sharp, title: 'Log Out')),
            
           ],
         ),

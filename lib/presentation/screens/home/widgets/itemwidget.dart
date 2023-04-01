@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:nuance/model/product_model.dart';
+import 'package:nuance/presentation/screens/home/widgets/addwishlist.dart';
 import 'package:nuance/presentation/screens/productview/productview.dart';
 
 import '../../../../controller/searchcontroller.dart';
@@ -38,20 +37,19 @@ class ItemWidget extends StatelessWidget {
             child:CircularProgressIndicator(),
           );
         }else{
-          return Padding(padding: EdgeInsets.all(15),
+          return Padding(padding: const EdgeInsets.all(15),
           child: GetBuilder<Searchcontroller>(
             init: Searchcontroller(),
             builder: (searchcontroller){
               return  GridView.builder(
       itemCount: searchcontroller.searchlist.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        childAspectRatio: 0.80,
+        childAspectRatio: 0.72,
         crossAxisCount: 2,
         crossAxisSpacing: 8.0,
         mainAxisSpacing: 1.0,
       ),
       itemBuilder: (context, index) {
-        //   for (int i = 0; i < 10; i++)
         return GestureDetector(
           onTap: () {
              Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=> ProductView(product:searchcontroller.searchlist[index] ,) ) );
@@ -60,19 +58,13 @@ class ItemWidget extends StatelessWidget {
             padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
             margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
             decoration: BoxDecoration(
-                color:  Color.fromARGB(255, 255, 255, 255), borderRadius: BorderRadius.circular(20)),
+            color:  const Color.fromARGB(255, 255, 255, 255), borderRadius: BorderRadius.circular(20)),
             child: Column(
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    GestureDetector(
-                      onTap: () {},
-                      child: const Icon(
-                        Icons.favorite_border,
-                        color: Colors.black,
-                      ),
-                    ),
+                    IconWishlist(documentSnapshot: searchcontroller.searchlist, index: index)
                   ],
                 ),
                 Image.network(
@@ -111,11 +103,8 @@ class ItemWidget extends StatelessWidget {
           ),
         );
       },
-      // childAspectRatio: 0.80,
       physics: const NeverScrollableScrollPhysics(),
-      // crossAxisCount: 2,
       shrinkWrap: true,
-      // children: [],
     );
             }),
           );

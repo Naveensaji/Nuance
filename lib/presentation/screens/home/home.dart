@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:nuance/core/constants/constants.dart';
 import 'package:nuance/presentation/screens/home/widgets/brandrow.dart';
 import 'package:nuance/presentation/screens/home/widgets/itemwidget.dart';
@@ -32,13 +31,12 @@ class HomePage extends StatelessWidget {
               kHeight10,
               const Rowbrand(),
               kHeight10,
-              //SreachScreenProducts()
                ItemWidget()
-                  ],
-            ),
-          ],
-        ),
-      ),
+                  ]
+            )
+          ]
+        )
+      )
     );
   }
 }

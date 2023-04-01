@@ -15,11 +15,10 @@ class Profileimage extends StatelessWidget {
         children: [
           const CircleAvatar(
             backgroundImage: AssetImage('assets/images/d18d74aa613a9d18323ee1ef8b64d3aa-removebg-preview (1).jpg'),
-            radius: 60,
+            radius: 70,
             backgroundColor: kBlack,
           ),
-          kHeight10,
-          Textlogin(text: 'Naveen Saji', textsize: 17)
+          //Textlogin(text: 'Naveen Saji', textsize: 19)
         ],
       ),
     );

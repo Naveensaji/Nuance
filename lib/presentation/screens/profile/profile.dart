@@ -1,11 +1,20 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nuance/core/constants/constants.dart';
+import 'package:nuance/model/prodile_model.dart';
+import 'package:nuance/presentation/screens/login/widget/text.dart';
 import 'package:nuance/presentation/screens/notifation/notification.dart';
+import 'package:nuance/presentation/screens/profile/widget/COntainerprofile.dart';
+import 'package:nuance/presentation/screens/profile/widget/editbutton.dart';
+import 'package:nuance/presentation/screens/profile/widget/editprofile.dart';
 import 'package:nuance/presentation/screens/profile/widget/profileimage.dart';
 import 'package:nuance/presentation/screens/profile/widget/profiletile.dart';
 import 'package:nuance/presentation/widgets/appbarwidget.dart';
+
+import '../../../functions/profile/editprofile.dart';
 
 class ProfilePage extends StatelessWidget {
    ProfilePage({super.key});
@@ -20,27 +29,50 @@ class ProfilePage extends StatelessWidget {
       preferredSize: Size.fromHeight(60),
       child: Appbarwidget(appbartitle: 'Profile',)),
       body:SafeArea(
-        child: ListView(
+        child:StreamBuilder<List<ProfileModel>>(
+          stream:  FirebaseFirestore.instance
+            .collection('users')
+            .doc(currentemail)
+            .collection('userdetails')
+            .snapshots()
+            .map((event) => event.docs
+                .map((e) => ProfileModel.fromJson(e.data()))
+                .toList()),
+          builder:(context, snapshot) {
+            if(snapshot.hasData){
+              List<ProfileModel>profile =snapshot.data!;
+              return   ListView(
           children: 
             [
               Column(
               children: [
-                 kHeight40,
+                 kHeight100,
                const Profileimage(),
-                kHeight40,
-               profiletile(controller: _nameController,hinttext: 'Full Name',trailingIcon: Icons.edit,leadingIcon: Icons.person,),
-               kHeight10,
-                profiletile(controller: _emailController,hinttext: 'E-mail id',leadingIcon: Icons.mail,),
                 kHeight10,
-               GestureDetector(
-                onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>const NotificationPage() ) );
-                },
-                child: profiletile(controller: _numberController,hinttext: 'Phone number',trailingIcon: Icons.edit,leadingIcon: Icons.phone,))
+             Textlogin(text: 'Naveen Saji', textsize: 19),
+             kHeight10,
+              //  profiletile(controller: _emailController,hinttext: 'User Name',leadingIcon: Icons.mail,),
+                Profilecontainer(text: profile[0].username  ?? 'No Username',),
+                kHeight10,
+                Profilecontainer(text:profile[0].useremail ?? 'No Email',),
+                kHeight10,
+                Profilecontainer(text:profile[0].userphone ?? 'No Phonenumber',),
+                kHeight40,
+                 GestureDetector(
+                  onTap: () => Get.to(()=> EditProfile(
+                  name: profile[0].username ?? '',
+                  phone: profile[0].userphone ?? '',
+                  editimage: profile[0].image.toString(),
+                  )),
+                  child: const Editbutton(text: 'Edit',))
                 ],
             ),
           ],
-        ),
+        );
+            } else {
+            return const Center(child: CircularProgressIndicator());
+          }
+          }, )
       ),
     );
   }

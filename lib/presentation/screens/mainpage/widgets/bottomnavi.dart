@@ -17,8 +17,7 @@ class Bottomnavwidget extends StatelessWidget {
       valueListenable: indexChangeNotifier, 
       builder:  (context, int newIndex, _){
           return  Container(
-     decoration: const BoxDecoration(color: kBlack,
-    //  borderRadius: BorderRadius.circular(20)
+     decoration: const BoxDecoration(color: kBlack
      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0,vertical: 10),

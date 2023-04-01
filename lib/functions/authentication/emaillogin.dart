@@ -10,8 +10,7 @@ emaillogin({required String useremail, required String userpassword}) async {
         .user;
     if (firebaseuser != null) {
       Get.offAll(MainPage (),
-          transition: Transition.circularReveal,
-          duration: const Duration(seconds: 3));
+         );
     } else {}
   } on FirebaseAuthException catch (e) {
     // ignore: avoid_print

@@ -16,10 +16,11 @@ final String appbartitle;
       centerTitle: true,
       backgroundColor:kBackgroundcolor ,
       elevation: 0,
+      automaticallyImplyLeading: false,
       title: Text(appbartitle,style: GoogleFonts.redHatDisplay(
       textStyle: const TextStyle(
             color: Colors.black,
-            fontSize: 28,
+            fontSize: 25,
             fontWeight: FontWeight.w900
       )
         ),),

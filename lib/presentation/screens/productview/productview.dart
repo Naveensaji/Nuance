@@ -70,11 +70,11 @@ class ProductView extends StatelessWidget {
         ],
       ),
     ),
-            const Align(
+             Align(
               alignment: Alignment.bottomCenter,
               child: TotalPriceBottomWidget(
                 title: 'Total cost',
-                totalPrice: '5939',
+                totalPrice: product.price,
                 selectPayments: 'Payment',
               ),
             )

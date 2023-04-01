@@ -7,7 +7,6 @@ class profiletile extends StatelessWidget {
     Key? key,
     
       this.hinttext,
-      this.trailingIcon,
       this.errorText,
       this.leadingIcon,
     required TextEditingController controller,
@@ -16,7 +15,7 @@ class profiletile extends StatelessWidget {
 TextEditingController controller = TextEditingController();
   String? hinttext, errorText;
   IconData? leadingIcon;
-  IconData? trailingIcon;
+ 
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,7 +39,7 @@ TextEditingController controller = TextEditingController();
             ),
             ),
           ),
-          trailing: Icon(trailingIcon,color: Colors.grey,),
+         // trailing: Icon(trailingIcon,color: Colors.grey,),
         ),
     );
   }

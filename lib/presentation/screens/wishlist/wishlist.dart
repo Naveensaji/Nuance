@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nuance/core/constants/constants.dart';
-import 'package:nuance/presentation/screens/home/widgets/itemwidget.dart';
+import 'package:nuance/presentation/screens/wishlist/widgets/wishlistgrid.dart';
 import 'package:nuance/presentation/widgets/appbarwidget.dart';
 
 
@@ -19,7 +19,7 @@ class WishlistPage extends StatelessWidget {
           children: 
             [Column(
               children: [
-               //ItemWidget()
+              WishlistGridview()
                   ],
             ),
           ],
