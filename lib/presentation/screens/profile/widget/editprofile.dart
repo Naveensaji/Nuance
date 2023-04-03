@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nuance/core/constants/constants.dart';
 import 'package:nuance/functions/profile/editprofile.dart';
-import 'package:nuance/model/prodile_model.dart';
+import 'package:nuance/domain/model/prodile_model.dart';
 import 'package:nuance/presentation/screens/profile/widget/editbutton.dart';
 
 import '../../../../functions/profile/imagepicker.dart';

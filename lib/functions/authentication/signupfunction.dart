@@ -11,7 +11,9 @@ signupfun(
     {required String username,
     required String userpassword,
     required String useremail,
-    required String phone}) async {
+    required String phone,
+   
+    }) async {
   await FirebaseAuth.instance
       .createUserWithEmailAndPassword(email: useremail, password: userpassword)
       .then((value) async{
@@ -19,7 +21,9 @@ signupfun(
     useremail: useremail,
     userpassword: userpassword,
     userphone: phone,
-    username: username );
+    username: username, 
+   address:'please add an address'
+    );
     log('usercreated');
     Get.offAll(() => LoginPage());
   });

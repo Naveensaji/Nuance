@@ -44,7 +44,7 @@ class SettingsPage extends StatelessWidget {
             kHeight10,
             GestureDetector(
               onTap: () async{
-                logout();
+               // logout();
                await Get.to(()=>LoginPage());
               },
               child: Settingstile(leadingicon: Icons.logout, trailingicon: Icons.arrow_forward_ios_sharp, title: 'Log Out')),

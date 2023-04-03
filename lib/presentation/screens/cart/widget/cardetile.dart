@@ -1,84 +1,53 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:nuance/core/constants/constants.dart';
+import 'package:nuance/domain/model/product_model.dart';
+import 'package:nuance/presentation/screens/cart/widget/quantitywidget.dart';
+
+import '../../../../functions/profile/editprofile.dart';
+import 'cartcontianer.dart';
 
 
 class CartListView extends StatelessWidget {
   const CartListView({
     Key? key,
-    required this.cartimage,
-    required this.cartProductName,
-    required this.cartProductPrice,
+  
+   
   }) : super(key: key);
 
-  final List<String>? cartimage;
-  final List<String>? cartProductName;
-  final List<int>? cartProductPrice;
+ 
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
+    return StreamBuilder<List<ProductModel>>(
+      stream:  FirebaseFirestore.instance
+                .collection('users')
+                .doc(currentemail)
+                .collection('cart')
+                .snapshots()
+                .map((snapshot) => snapshot.docs
+                    .map((e) => ProductModel.fromJson(e.data()))
+                    .toList()),
+      builder: (context, snapshot) {
+        if(snapshot.hasData){
+        List<ProductModel> docSnapshot = snapshot.data!;
+          return ListView.separated(
       separatorBuilder: (context, index) => kHeight40,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-        return Row(
-           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            kWidth10,
-            Container(
-              width: 100,
-              height: 100,
-              decoration: BoxDecoration(
-                  color: kWhite, borderRadius: BorderRadius.circular(40)),
-              child: Image.network(
-                cartimage![index],
-                fit: BoxFit.contain,
-              ),
-            ),
-            kWidth10,
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: SizedBox(
-                width: 100,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      cartProductName![index],
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                          color: kBlack,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      '₹ ${cartProductPrice![index]}',
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                          color: kBlack,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Column(
-              // mainAxisSize: MainAxisSize.min,
-              children: [
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.delete,
-                      color: kBlack,
-                    )),
-                
-              ],
-            )
-          ],
+        return containerrow(
+          product: docSnapshot[index],
+          index: index,
         );
       },
-      itemCount: cartimage!.length,
+      itemCount:snapshot.data!.length,
     );
+        }else{
+          return const Text('No items added in cart');
+        }
+      },
+      );
+
   }
 }

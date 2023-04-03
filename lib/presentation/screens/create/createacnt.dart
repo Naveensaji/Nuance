@@ -9,7 +9,7 @@ import 'package:nuance/presentation/screens/login/widget/text.dart';
 import 'package:nuance/presentation/screens/splashs/widgets/imagecontainer.dart';
 import 'package:nuance/presentation/widgets/textfield.dart';
 
-import '../../../controller/siginincontroller.dart';
+import '../../../domain/controller/siginincontroller.dart';
 
 class CreateAccount extends StatelessWidget {
    CreateAccount({super.key});

@@ -4,10 +4,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:nuance/controller/siginincontroller.dart';
+import 'package:nuance/domain/controller/siginincontroller.dart';
 import 'package:nuance/core/constants/constants.dart';
 import 'package:nuance/functions/authentication/emaillogin.dart';
-import 'package:nuance/functions/authentication/googlesinin.dart';
 import 'package:nuance/presentation/screens/create/createacnt.dart';
 import 'package:nuance/presentation/screens/login/widget/forgotpassword.dart';
 import 'package:nuance/presentation/screens/login/widget/googlefield.dart';
@@ -84,9 +83,9 @@ class LoginPage extends StatelessWidget {
                   child: Textlogin(text: "Create an account",textsize: 18 )),
                 kHeight10,
                 GestureDetector(
-                  onTap: () async{
-                await  googleLogin();
-                Get.to(()=>MainPage());
+                  onTap: () {
+                 signinwithgoogle();
+              //  Get.to(()=>MainPage());
                  
                   },
                   child: const Googlefield())

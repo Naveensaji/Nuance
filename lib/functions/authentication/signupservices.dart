@@ -9,7 +9,8 @@ import 'package:firebase_auth/firebase_auth.dart';
   required String userphone, 
   required String useremail, 
   required String userpassword,
-    required String image,
+  required String image,
+  required String address,
   
   }
  )async{
@@ -27,7 +28,8 @@ try{
                             'userPassword':userpassword,
                             'createdAt':DateTime.now(),
                             'userId':userid!.uid,
-                            'image':image
+                            'image':image,
+                            'address':address
 
                           }).then((value) => (value) {
                             FirebaseAuth.instance.signOut();

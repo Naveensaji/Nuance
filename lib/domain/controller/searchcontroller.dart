@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nuance/model/product_model.dart';
+import 'package:nuance/domain/model/product_model.dart';
 
 class Searchcontroller extends GetxController{
   var name ='';

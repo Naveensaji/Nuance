@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuance/core/constants/constants.dart';
-import 'package:nuance/model/product_model.dart';
+import 'package:nuance/domain/model/product_model.dart';
 import 'package:nuance/presentation/screens/cart/widget/totalprice.dart';
 import 'package:nuance/presentation/screens/login/widget/text.dart';
 import 'package:nuance/presentation/screens/productview/widget/pageviewdart.dart';
@@ -51,7 +51,7 @@ class ProductView extends StatelessWidget {
         children: [
            PageViewWidget(product: product,image: product.imagelist[0]),
           kHeight10,
-           ProductNamePriceCart(name: product.name,price: product.price,),
+           ProductNamePriceCart(name: product.name,price: product.price, product: product,),
           kHeight10,
           ProductDiscription(productdescription:product.description),
           kHeight100,

@@ -3,11 +3,11 @@ import 'package:get/get.dart';
 import 'package:nuance/core/constants/constants.dart';
 import 'package:nuance/presentation/screens/home/widgets/brandrow.dart';
 import 'package:nuance/presentation/screens/home/widgets/itemwidget.dart';
-import 'package:nuance/presentation/screens/home/widgets/rowband.dart';
+import 'package:nuance/presentation/screens/home/category/rowbrand.dart';
 import 'package:nuance/presentation/screens/home/widgets/searchfield.dart';
 import 'package:nuance/presentation/widgets/appbarwidget.dart';
 
-import '../../../controller/searchcontroller.dart';
+import '../../../domain/controller/searchcontroller.dart';
 
 class HomePage extends StatelessWidget {
    HomePage({super.key});
@@ -29,8 +29,8 @@ class HomePage extends StatelessWidget {
               kHeight10,
               const Brandrow(),
               kHeight10,
-              const Rowbrand(),
-              kHeight10,
+               const Rowbrand(),
+              kHeight100,
                ItemWidget()
                   ]
             )

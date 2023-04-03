@@ -5,7 +5,7 @@ import 'package:nuance/functions/profile/editprofile.dart';
 import 'package:nuance/functions/wishlist/wishlist_dunction.dart';
 
 
-import '../../../../model/product_model.dart';
+import '../../../../domain/model/product_model.dart';
 
 class IconWishlist extends StatelessWidget {
   const IconWishlist(

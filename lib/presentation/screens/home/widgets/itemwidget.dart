@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nuance/model/product_model.dart';
+import 'package:nuance/domain/model/product_model.dart';
 import 'package:nuance/presentation/screens/home/widgets/addwishlist.dart';
 import 'package:nuance/presentation/screens/productview/productview.dart';
 
-import '../../../../controller/searchcontroller.dart';
+import '../../../../domain/controller/searchcontroller.dart';
 
 class ItemWidget extends StatelessWidget {
   ItemWidget({Key? key}) : super(key: key);

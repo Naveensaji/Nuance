@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nuance/core/constants/constants.dart';
 
-import '../../../../model/product_model.dart';
+import '../../../../domain/model/product_model.dart';
 
 
 class PageViewWidget extends StatelessWidget {

@@ -6,12 +6,17 @@ import 'package:nuance/presentation/screens/payment/widget/deliveryaddress.dart'
 import 'package:nuance/presentation/screens/payment/widget/paymentile.dart';
 import 'package:nuance/presentation/widgets/appbarwidget.dart';
 
+import '../../../domain/model/product_model.dart';
+
 
 
 class PaymentPage extends StatelessWidget {
-  const PaymentPage({super.key, required this.addresscontroller});
+   PaymentPage({super.key,
+   required this.product
+    });
 
-  final TextEditingController addresscontroller;
+ final TextEditingController addresscontroller = TextEditingController();
+   ProductModel? product;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -45,7 +50,7 @@ class PaymentPage extends StatelessWidget {
                 }),),
                kHeight10,
                kHeight10,
-            const   Align(
+               Align(
           alignment: Alignment.bottomCenter,
          // widthFactor: 1.2,
           child: TotalPriceBottomWidget(

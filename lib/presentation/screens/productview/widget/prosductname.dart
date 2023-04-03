@@ -3,6 +3,8 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nuance/core/constants/constants.dart';
+import 'package:nuance/domain/model/product_model.dart';
+import 'package:nuance/functions/cart/addcart.dart';
 
 
 
@@ -11,10 +13,11 @@ class ProductNamePriceCart extends StatelessWidget {
     Key? key, 
     required this.name,
     required this.price,
+     required this.product,
   }) : super(key: key);
   final String name;
     final String price;
-
+ final ProductModel product;
   @override
   Widget build(BuildContext context) {
      return Row(
@@ -44,7 +47,9 @@ class ProductNamePriceCart extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(right: 20),
           child: IconButton(
-              onPressed: () {              },
+              onPressed: () {     
+                    addToCart(product:product );
+                       },
               icon: const Icon(
                 Icons.add_shopping_cart_rounded,
                 size: 25,

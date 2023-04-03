@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:nuance/core/constants/constants.dart';
-import 'package:nuance/model/product_model.dart';
+import 'package:nuance/domain/model/product_model.dart';
 
 import '../profile/editprofile.dart';
 final currentUser = FirebaseAuth.instance.currentUser!.email;
