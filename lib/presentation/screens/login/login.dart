@@ -12,7 +12,6 @@ import 'package:nuance/presentation/screens/login/widget/forgotpassword.dart';
 import 'package:nuance/presentation/screens/login/widget/googlefield.dart';
 import 'package:nuance/presentation/screens/login/widget/signbox.dart';
 import 'package:nuance/presentation/screens/login/widget/text.dart';
-import 'package:nuance/presentation/screens/mainpage/mainpage.dart';
 import 'package:nuance/presentation/screens/splashs/widgets/imagecontainer.dart';
 import 'package:nuance/presentation/widgets/textfield.dart';
 
@@ -33,22 +32,22 @@ class LoginPage extends StatelessWidget {
             child: Column(
               children: [
                const Imagecontainer(),
-                Text('Welcome to Audiozic',
-                style: GoogleFonts.redHatDisplay(textStyle:const TextStyle(fontSize: 28,fontWeight: FontWeight.w800)),),
-                  kHeight10,
-                  Textlogin(text: 'Login to your account',textsize: 20,),
-               kHeight40,
+               Text('Welcome to Audiozic',
+               style: GoogleFonts.redHatDisplay(textStyle:const TextStyle(fontSize: 28,fontWeight: FontWeight.w800)),),
+                kHeight10,
+                Textlogin(text: 'Login to your account',textsize: 20,),
+                kHeight40,
                 Textfieldcontainer(
-                  keyboardtype:TextInputType.emailAddress ,
-                 leadingicon: Icons.mail,
-                 trailingicon: Icons.remove_red_eye_outlined,
-                 title: 'Email',
-                 validator: (value) {
-                     return siginincontroller.validateemail(value!);},
-                     onsave: (value) {
+                keyboardtype:TextInputType.emailAddress ,
+                leadingicon: Icons.mail,
+                trailingicon: Icons.remove_red_eye_outlined,
+                title: 'Email',
+                validator: (value) {
+                        return siginincontroller.validateemail(value!);},
+                        onsave: (value) {
                         siginincontroller.email=value!;},
-                 controller: siginincontroller.emailcontroller,
-                 hide: false,),
+                        controller: siginincontroller.emailcontroller,
+                        hide: false,),
                 kHeight10,
                 Textfieldcontainer(leadingicon: Icons.lock,
                 trailingicon: Icons.remove_red_eye,
@@ -57,35 +56,35 @@ class LoginPage extends StatelessWidget {
                 validator: (value) {
                      return siginincontroller.validatepassword(value!);},
                      onsave: (value) {
-                        siginincontroller.password=value!;},
-                controller: siginincontroller.passwordcontroller, 
-                hide: true,),
+                     siginincontroller.password=value!;},
+                     controller: siginincontroller.passwordcontroller, 
+                      hide: true,),
                 kHeight10,
                 GestureDetector(onTap: ()  async {
                     siginincontroller.checkLogin();
 
-                    await emaillogin(
+                        await emaillogin(
                         useremail: siginincontroller.email,
                         userpassword: siginincontroller.password);
                   },
                 child: Signbox(text: 'Sign In')),
-               kHeight10,
+                kHeight10,
                 GestureDetector(
                   onTap: () {
-                    Get.to(()=>ForgotPassword());
+                  Get.to(()=>ForgotPassword());
                   },
                   child: Textlogin(text: 'Forgot you password?',textsize: 12 )),
                 kHeight10,
                 GestureDetector(
                   onTap: () {
-                    Get.to(()=>CreateAccount());
+                  Get.to(()=>CreateAccount());
                   },
-                  child: Textlogin(text: "Create an account",textsize: 18 )),
+                child: Textlogin(text: "Create an account",textsize: 18 )),
                 kHeight10,
                 GestureDetector(
                   onTap: () {
                  signinwithgoogle();
-              //  Get.to(()=>MainPage());
+                
                  
                   },
                   child: const Googlefield())

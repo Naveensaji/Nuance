@@ -47,11 +47,12 @@ void signinwithgoogle() async {
   AuthCredential credential = GoogleAuthProvider.credential(
       accessToken: googleauth?.accessToken, idToken: googleauth?.idToken);
   try {
-    final name = FirebaseAuth.instance.currentUser!.displayName;
-    final email = FirebaseAuth.instance.currentUser!.email;
-    final phone = FirebaseAuth.instance.currentUser!.phoneNumber;
+   
     UserCredential userCredential =
         await FirebaseAuth.instance.signInWithCredential(credential);
+         final name = FirebaseAuth.instance.currentUser!.displayName;
+    final email = FirebaseAuth.instance.currentUser!.email;
+    final phone = FirebaseAuth.instance.currentUser!.phoneNumber;
     await signupUser(
         image:
             'https://thumbs.dreamstime.com/z/businessman-icon-image-male-avatar-profile-vector-glasses-beard-hairstyle-179728610.jpg',

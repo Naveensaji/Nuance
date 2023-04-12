@@ -12,7 +12,7 @@ class ItemWidget extends StatelessWidget {
     Searchcontroller searchcontroller = Get.put(Searchcontroller());
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {});
+   // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {});
     return StreamBuilder<List<ProductModel>>(
       stream: FirebaseFirestore.instance
       .collection('search')
@@ -29,7 +29,7 @@ class ItemWidget extends StatelessWidget {
         }
         else if(snapshot.data == null){
           return const Center(
-            child: Text('Empty'),
+            child: Text('Empty'), 
           );
         }
         else if(snapshot.connectionState == ConnectionState.waiting){

@@ -49,7 +49,7 @@ class ProfilePage extends StatelessWidget {
                  kHeight100,
                const Profileimage(),
                 kHeight10,
-             Textlogin(text: 'Naveen Saji', textsize: 19),
+             Textlogin(text: profile[0].username ?? 'no username', textsize: 19),
              kHeight10,
               //  profiletile(controller: _emailController,hinttext: 'User Name',leadingIcon: Icons.mail,),
                 Profilecontainer(text: profile[0].username  ?? 'No Username',),

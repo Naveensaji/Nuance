@@ -95,7 +95,7 @@ class WishlistGridview extends StatelessWidget {
       // children: [],
     );
         }else{
-          return const Text('No data');
+          return const Text('No items in wishlist',style: TextStyle(color: Colors.black),);
         }
       },
       ),

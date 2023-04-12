@@ -14,7 +14,7 @@ class BrandView extends StatelessWidget {
       backgroundColor: kBackgroundcolor,
       appBar:  PreferredSize(
         preferredSize: const Size.fromHeight(60),
-        child: Appbarwidget(appbartitle: brand)),
+        child: Appbarwidget(appbartitle: brand,arrow: Icons.arrow_back_ios,)),
         body: ListView(
           children: [
             Column(

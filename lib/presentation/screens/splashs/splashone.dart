@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nuance/presentation/screens/splashs/splashtwo.dart';
 import 'package:nuance/presentation/screens/splashs/widgets/splashtext.dart';
 import 'package:nuance/presentation/screens/splashs/widgets/imagecontainer.dart';
@@ -40,9 +41,8 @@ class SplashOne extends StatelessWidget {
 }
 
 Future<void>splashtwo(context) async{
-  await  Future.delayed(Duration(seconds: 3));
-   Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>SplashTwo()
-    )
-    );
+  await  Future.delayed(const Duration(seconds: 3));
+  Get.to(()=>const SplashTwo()) ;
+  
     
   }

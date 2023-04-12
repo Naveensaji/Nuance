@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nuance/core/constants/constants.dart';
@@ -7,6 +8,9 @@ import 'package:nuance/presentation/screens/login/widget/text.dart';
 import 'package:nuance/presentation/screens/productview/widget/pageviewdart.dart';
 import 'package:nuance/presentation/screens/productview/widget/productdetails.dart';
 import 'package:nuance/presentation/screens/productview/widget/prosductname.dart';
+
+import '../../../functions/profile/editprofile.dart';
+import '../../../functions/wishlist/wishlist_dunction.dart';
 
 
 class ProductView extends StatelessWidget {
@@ -35,11 +39,44 @@ class ProductView extends StatelessWidget {
                   color: Colors.black,
                 )),
           ),
-          actions: const [
-            Icon(
-              Icons.favorite_border,
-              color: Colors.black,
-            ),
+          actions:  [
+           StreamBuilder(
+            stream: FirebaseFirestore.instance
+                    .collection('users')
+                    .doc(currentemail)
+                    .collection('wishlist')
+                    .snapshots()
+                    .map((snapshot) => snapshot.docs
+                        .map((e) => ProductModel.fromJson(e.data()))
+                        .toList()),
+            builder: (context, snapshot) {
+              final wishlist = snapshot.data;
+              if(snapshot.hasData){
+                return IconButton(
+                icon: Icon(
+                        wishlist!
+                                .where(
+                                  (item) => item.name == product.name,
+                                )
+                                .isEmpty
+                            ? Icons.favorite_outline_rounded
+                            : Icons.favorite,
+                        size: 30,
+                        color: kBlack,
+                      ),
+                onPressed: () async {
+                        wishlist
+                                .where(
+                                  (item) => item.name == product.name,
+                                )
+                                .isNotEmpty
+                            ? await removefromwishlist(doc: product.name)
+                            : await addtowishlist(product: product);
+                      }, );
+              }else{
+                return const SizedBox();
+              }
+            },),
             kWidth10,
           ],
         ),

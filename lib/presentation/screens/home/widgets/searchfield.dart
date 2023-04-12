@@ -1,35 +1,41 @@
 
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
 import '../../../../core/constants/constants.dart';
+import '../../../../domain/controller/searchcontroller.dart';
 
 class Searchfield extends StatelessWidget {
-  const Searchfield({
+   Searchfield({
     Key? key,
-    required TextEditingController searchontroller,
-  }) : _searchontroller = searchontroller, super(key: key);
+    
+  }) : super(key: key);
 
-  final TextEditingController _searchontroller;
-
+   final search = TextEditingController();
+   final c = Get.put(Searchcontroller());
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 55,
-      width: 350,
+  return GetBuilder<Searchcontroller>(
+        builder: (c){
+        return  Container(
+        height: 55,
+        width: 350,
         decoration: BoxDecoration(color: kBlack,
-          borderRadius: BorderRadius.circular(50)
+        borderRadius: BorderRadius.circular(50)
         ),
-        child: ListTile(
+          child: ListTile(
           leading:const Icon(Icons.search,color: Colors.grey,),
           title: TextFormField(
-            style: const TextStyle(color: kWhite,fontSize: 14),
-            controller:_searchontroller ,
+          style: const TextStyle(color: kWhite,fontSize: 14),
+          controller: search,
+          onChanged: (value) {
+              c.search(value);
+            },
             cursorColor: kWhite,
             decoration: const InputDecoration(
-              border: InputBorder.none,
-     hintText: 'Looking for headphones..?',
-     hintStyle: TextStyle(
-    fontSize: 14,
+            border: InputBorder.none,
+            hintText: 'Looking for headphones..?',
+            hintStyle: TextStyle(
+            fontSize: 14,
             color: Colors.grey,
             ),
             ),
@@ -37,5 +43,6 @@ class Searchfield extends StatelessWidget {
        
         ),
     );
+      });
   }
 }

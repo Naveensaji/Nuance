@@ -26,10 +26,10 @@ class IconWishlist extends StatelessWidget {
                 .map((e) => ProductModel.fromJson(e.data()))
                 .toList()),
         builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            final wishlist = snapshot.data;
-            return IconButton(
-              icon: Icon(
+        if (snapshot.hasData) {
+        final wishlist = snapshot.data;
+        return IconButton(
+                icon: Icon(
                 wishlist!
                         .where(
                           (item) =>

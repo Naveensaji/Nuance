@@ -57,17 +57,19 @@ class _EditProfileState extends State<EditProfile> {
         Column(
                children: [
                 CircleAvatar(
-                backgroundImage:NetworkImage(widget.editimage),
+                backgroundImage:NetworkImage(
+                widget.editimage,
+                  ),
                 radius: 70,
                 backgroundColor: kBlack,  ),
                 IconButton(onPressed: (){
                      setState(() async {
                      final imageurl = await Images.getimage();
                      widget.editimage = imageurl!;
-                    log(imageurl.toString());
+                     log(imageurl.toString());
                             });
                },
-              icon: const Icon(Icons.camera_alt_outlined,color: kBlack,size: 25,)),
+               icon: const Icon(Icons.camera_alt_outlined,color: kBlack,size: 25,)),
                Textlogin(text: 'Naveen Saji', textsize: 19),
                Padding(
                    padding: const EdgeInsets.all(16.0),
@@ -77,7 +79,6 @@ class _EditProfileState extends State<EditProfile> {
                         kHeight100,
                         EditFormfiled(text: 'Phone Number',controller:phonecontroller,),
                         kHeight100,
-                        // EditFormfiled(text: 'Address'),
                         kHeight40,
                         GestureDetector(
                         onTap: ()async {

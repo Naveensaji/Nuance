@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:nuance/core/constants/constants.dart';
 import 'package:nuance/presentation/screens/home/widgets/brandrow.dart';
 import 'package:nuance/presentation/screens/home/widgets/itemwidget.dart';
@@ -11,27 +12,45 @@ import '../../../domain/controller/searchcontroller.dart';
 
 class HomePage extends StatelessWidget {
    HomePage({super.key});
-  final TextEditingController _searchontroller = TextEditingController( );
+  
     Searchcontroller searchcontroller = Get.put(Searchcontroller());
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        appBar: const PreferredSize(
-        preferredSize: Size.fromHeight(60),
-        child: Appbarwidget(appbartitle: 'Nuance')),
+    child: Scaffold(
+        appBar:  AppBar(
+      centerTitle: true,
+      leading: InkWell(
+        onTap: () => Get.back(),
+        child: const Icon(Icons.menu,color: kBlack,)),
+      backgroundColor:kBackgroundcolor ,
+      elevation: 0,
+      automaticallyImplyLeading: false,
+      title: Text('Nuance',style: GoogleFonts.redHatDisplay(
+      textStyle: const TextStyle(
+            color: Colors.black,
+            fontSize: 25,
+            fontWeight: FontWeight.w900
+      )
+        ),),
+        actions: [Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Icon(Icons.more_vert,color: kBlack,),
+        )],
+    ),
         backgroundColor:kBackgroundcolor,
         body: ListView(
-          children: 
-            [Column(
+        children: 
+            [
+              Column(
               children: [
-               Searchfield(searchontroller: _searchontroller),
+              Searchfield(),
               kHeight10,
               const Brandrow(),
               kHeight10,
-               const Rowbrand(),
+              const Rowbrand(),
               kHeight100,
-               ItemWidget()
+              ItemWidget()
                   ]
             )
           ]
