@@ -7,7 +7,7 @@ class PaymentTile extends StatelessWidget {
   const PaymentTile(
       {Key? key,required this.title, required this.imageUrl,required this.radiobutton})
       : super(key: key);
-  final String? title;
+  final String title;
   final String? imageUrl;
   final Widget? radiobutton;
 
@@ -32,7 +32,7 @@ class PaymentTile extends StatelessWidget {
             ),
             tileColor:const Color.fromARGB(255, 41, 42, 44),
             title: Text(
-              '$Title',
+              title,
               style: GoogleFonts.redHatDisplay(textStyle:  const TextStyle(
                     color: kWhite,
                     fontSize: 16,

@@ -10,12 +10,12 @@ import '../../../../domain/model/product_model.dart';
 class TotalPriceBottomWidget extends StatelessWidget {
    TotalPriceBottomWidget(
       {Key? key, this.title,
-       this.brand,
+        required this.brand,
        this.totalPrice, this.selectPayments})
       : super(key: key);
 
   final String? title;
-   ProductModel? brand;
+   ProductModel brand;
   final String? totalPrice;
   final String? selectPayments;
   @override
@@ -88,7 +88,7 @@ class TotalPriceBottomWidget extends StatelessWidget {
             kHeight40,
             GestureDetector(
               onTap: () {
-                Get.to(()=>PaymentPage(product: brand,)
+                Get.to(()=>PaymentPage(product: brand)
                 );
               },
               child: Container(

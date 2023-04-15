@@ -113,6 +113,7 @@ class ProductView extends StatelessWidget {
                 title: 'Total cost',
                 totalPrice: product.price,
                 selectPayments: 'Payment',
+                brand: product,
               ),
             )
           ],
