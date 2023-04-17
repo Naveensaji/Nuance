@@ -49,16 +49,14 @@ class WishlistGridview extends StatelessWidget {
                     IconButton(onPressed: (){
                       removefromwishlist(doc: documentSnapshot[index].doc);
                     },
-                     icon: Icon(Icons.favorite,
-                     color: Colors.grey.shade400,))
+                     icon: const Icon(Icons.favorite,
+                     color: Colors.black,))
                   ],
                 ),
-                Container(
-                  child: Image.network(
-                   documentSnapshot[index].imagelist[0],
-                    width: 100,
-                    height: 100,
-                  ),
+                Image.network(
+                 documentSnapshot[index].imagelist[0],
+                  width: 100,
+                  height: 100,
                 ),
                 Container(
                   padding: const EdgeInsets.only(bottom: 8),

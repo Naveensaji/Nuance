@@ -32,7 +32,8 @@ class PaymentPage extends StatelessWidget {
         backgroundColor: kBackgroundcolor,
         body:  ListView(
           children: 
-            [Column(
+            [kHeight10,
+              Column(
               children: [
               Padding(
               padding:  const EdgeInsets.only(left: 10, right: 10),

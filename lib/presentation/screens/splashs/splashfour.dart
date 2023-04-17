@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nuance/presentation/screens/login/login.dart';
+import 'package:nuance/presentation/screens/login/loginmain.dart';
 
 class SplashFour extends StatelessWidget {
   const SplashFour({super.key});
@@ -29,7 +30,7 @@ class SplashFour extends StatelessWidget {
                children: [
                  GestureDetector(
                   onTap: () {
-                     Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>LoginPage() ) );
+                     Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=> LoginPage() ) );
                   },
                    child: Container(
                     decoration: BoxDecoration(

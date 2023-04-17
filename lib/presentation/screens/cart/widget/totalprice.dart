@@ -73,7 +73,7 @@ class TotalPriceBottomWidget extends StatelessWidget {
                         fontWeight: FontWeight.bold),)
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 45),
+                    padding: const EdgeInsets.only(right: 40),
                     child: Text(
                       '₹50',
                       style: GoogleFonts.redHatDisplay(textStyle:  const TextStyle(

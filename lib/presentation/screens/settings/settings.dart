@@ -5,6 +5,7 @@ import 'package:nuance/functions/authentication/google.dart';
 import 'package:nuance/presentation/screens/login/login.dart';
 import 'package:nuance/presentation/screens/notifation/notification.dart';
 import 'package:nuance/presentation/screens/order%20history/orderhistory.dart';
+import 'package:nuance/presentation/screens/settings/widgets/dailogs/privacy_policy.dart';
 import 'package:nuance/presentation/screens/settings/widgets/settingstile.dart';
 import 'package:nuance/presentation/widgets/appbarwidget.dart';
 
@@ -28,7 +29,14 @@ class SettingsPage extends StatelessWidget {
               child: 
             Settingstile(leadingicon: Icons.notifications, trailingicon: Icons.arrow_forward_ios, title: 'Notifications')),
             kHeight10,
-            Settingstile(leadingicon: Icons.lock, trailingicon: Icons.arrow_forward_ios_sharp, title: 'Privacy Policy'),
+            InkWell(
+            onTap: () {
+              showDialog(context: context, 
+              builder: (context) {
+                return Policydialog(radius: 8, mdFilename:'privacy_policy.md' );
+              },);
+            },
+            child: Settingstile(leadingicon: Icons.lock, trailingicon: Icons.arrow_forward_ios_sharp, title: 'Privacy Policy')),
             kHeight10,
             Settingstile(leadingicon: Icons.info, trailingicon: Icons.arrow_forward_ios_sharp, title: 'Help Centre'),
             kHeight10,
@@ -38,7 +46,14 @@ class SettingsPage extends StatelessWidget {
               },
               child: Settingstile(leadingicon: Icons.card_travel, trailingicon: Icons.arrow_forward_ios_sharp, title: 'Order History')),
             kHeight10,
-            Settingstile(leadingicon: Icons.bookmark, trailingicon: Icons.arrow_forward_ios_sharp, title: 'Terms and conditions'),
+            InkWell(
+            onTap: () {
+            showDialog(context: context, 
+            builder: (context) {
+            return Policydialog(radius: 8, mdFilename:'terms_conditions.md' );
+              },);
+            },  
+            child: Settingstile(leadingicon: Icons.bookmark, trailingicon: Icons.arrow_forward_ios_sharp, title: 'Terms and conditions')),
             kHeight10,
             Settingstile(leadingicon: Icons.people_rounded, trailingicon: Icons.arrow_forward_ios_sharp, title: 'Invite Friends'),
             kHeight10,
