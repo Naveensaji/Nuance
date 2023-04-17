@@ -39,8 +39,8 @@ class PaymentPage extends StatelessWidget {
               child: Deliveryaddress(addresscontroller:addresscontroller,),),
               kHeight40,
             Textlogin(text: 'Select the payment you want to use', textsize: 14),kHeight40,
-             InkWell(
-              onTap: () {
+            InkWell(
+                onTap: () {
                 Pay(product).paymentmodel();
               },
                child: PaymentTile(title: 'Razer Pay', imageUrl: 'https://yt3.ggpht.com/ytc/AMLnZu8hEuwIDjx39XqXih5os_s6PVzgsptnGb8Q1tkKvw=s900-c-k-c0x00ffffff-no-rj', radiobutton: Radio(
