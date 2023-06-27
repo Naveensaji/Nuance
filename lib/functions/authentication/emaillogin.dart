@@ -6,7 +6,8 @@ emaillogin({required String useremail, required String userpassword}) async {
   try {
     final User? firebaseuser = (await FirebaseAuth.instance
             .signInWithEmailAndPassword(
-                email: useremail, password: userpassword))
+                email: useremail, password: userpassword)
+                )
         .user;
     if (firebaseuser != null) {
       Get.offAll(MainPage (),

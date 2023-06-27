@@ -24,7 +24,7 @@ try{
                           set({
                             'username':username,
                             'userPhone':userphone,
-                            'userEmail':useremail,
+                            'userEmail':useremail,  
                             'userPassword':userpassword,
                             'createdAt':DateTime.now(),
                             'userId':userid!.uid,

@@ -83,7 +83,7 @@ class LoginPage extends StatelessWidget {
                 kHeight10,
                 GestureDetector(
                   onTap: () {
-                 signinwithgoogle();
+                 googleLogin();
                 
                  
                   },

@@ -41,10 +41,10 @@ class SettingsPage extends StatelessWidget {
             Settingstile(leadingicon: Icons.info, trailingicon: Icons.arrow_forward_ios_sharp, title: 'Help Centre'),
             kHeight10,
             GestureDetector(
-              onTap: () {
-                 Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>OrderHistory() ) );
+            onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>OrderHistory() ) );
               },
-              child: Settingstile(leadingicon: Icons.card_travel, trailingicon: Icons.arrow_forward_ios_sharp, title: 'Order History')),
+            child: Settingstile(leadingicon: Icons.card_travel, trailingicon: Icons.arrow_forward_ios_sharp, title: 'Order History')),
             kHeight10,
             InkWell(
             onTap: () {

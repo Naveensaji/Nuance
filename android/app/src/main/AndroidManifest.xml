@@ -1,5 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.nuance">
+    package="in.brototype.nuance">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+
    <application
         android:label="nuance"
         android:name="${applicationName}"

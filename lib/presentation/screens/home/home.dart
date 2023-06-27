@@ -6,6 +6,7 @@ import 'package:nuance/presentation/screens/home/widgets/brandrow.dart';
 import 'package:nuance/presentation/screens/home/widgets/itemwidget.dart';
 import 'package:nuance/presentation/screens/home/category/rowbrand.dart';
 import 'package:nuance/presentation/screens/home/widgets/searchfield.dart';
+import 'package:nuance/presentation/screens/mainpage/widgets/drawer.dart';
 import 'package:nuance/presentation/widgets/appbarwidget.dart';
 
 import '../../../domain/controller/searchcontroller.dart';
@@ -21,7 +22,7 @@ class HomePage extends StatelessWidget {
         appBar:  AppBar(
       centerTitle: true,
       leading: InkWell(
-        onTap: () => Get.back(),
+        onTap: () =>const DrawerWidget(),
         child: const Icon(Icons.menu,color: kBlack,)),
       backgroundColor:kBackgroundcolor ,
       elevation: 0,

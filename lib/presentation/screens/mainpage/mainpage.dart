@@ -5,6 +5,7 @@ import 'package:nuance/core/constants/constants.dart';
 import 'package:nuance/presentation/screens/cart/cart.dart';
 import 'package:nuance/presentation/screens/home/home.dart';
 import 'package:nuance/presentation/screens/mainpage/widgets/bottomnavi.dart';
+import 'package:nuance/presentation/screens/mainpage/widgets/drawer.dart';
 import 'package:nuance/presentation/screens/profile/profile.dart';
 import 'package:nuance/presentation/screens/settings/settings.dart';
 import 'package:nuance/presentation/screens/wishlist/wishlist.dart';
@@ -22,6 +23,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer:DrawerWidget() ,
       backgroundColor: kWhite,
       body: SafeArea(
         child: ValueListenableBuilder(
